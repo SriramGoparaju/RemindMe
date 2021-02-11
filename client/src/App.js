@@ -15,19 +15,34 @@ import EditEventForm from "./pages/EditEventForm";
 import "./App.css";
 
 function App() {
-  return (
-    <AuthProvider>
-      <Router>
-        <Route exact path="/" component={Home} />
-        <AuthRoute exact path="/login" component={Login} />
-        <AuthRoute exact path="/register" component={Register} />
-        <NonAuthRoute exact path="/dashboard" component={DashBoard} />
-        <Route exact path="/add" component={AddEventForm} />
-        <Route exact path="/edit/:eventId" component={EditEventForm} />
-        {/* Have to make the add page a NonAuthRoute later */}
-      </Router>
-    </AuthProvider>
-  );
+      return (
+            <AuthProvider>
+                  <Router>
+                        <Route exact path="/" component={Home} />
+                        <AuthRoute exact path="/login" component={Login} />
+                        <AuthRoute
+                              exact
+                              path="/register"
+                              component={Register}
+                        />
+                        <NonAuthRoute
+                              exact
+                              path="/dashboard"
+                              component={DashBoard}
+                        />
+                        <NonAuthRoute
+                              exact
+                              path="/add"
+                              component={AddEventForm}
+                        />
+                        <Route
+                              exact
+                              path="/edit/:eventId"
+                              component={EditEventForm}
+                        />
+                  </Router>
+            </AuthProvider>
+      );
 }
 
 export default App;
