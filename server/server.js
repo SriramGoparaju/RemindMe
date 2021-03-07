@@ -21,7 +21,12 @@ Mongoose.connect(MONGODB, {
 	useUnifiedTopology: true,
 }).then(() => {
 	console.log("mongoDB connected");
-	server.listen({ port: 5000 }).then((res) => {
-		console.log(`Server running on ${res.url}`);
-	});
+	server
+		.listen({ port: 5000 })
+		.then((res) => {
+			console.log(`Server running on ${res.url}`);
+		})
+		.catch((err) => {
+			console.error(err);
+		});
 });
