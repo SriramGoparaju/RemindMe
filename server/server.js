@@ -8,6 +8,8 @@ const { MONGODB } = require("./config");
 const typeDefs = require("./Graphql/Schema/schema");
 const resolvers = require("./Graphql/Resolvers/resolvers");
 
+const PORT = process.env.port || 5000;
+
 // Creating a new server and passing request through context
 const server = new ApolloServer({
 	typeDefs,
@@ -22,7 +24,7 @@ Mongoose.connect(MONGODB, {
 }).then(() => {
 	console.log("mongoDB connected");
 	server
-		.listen({ port: 5000 })
+		.listen({ port: PORT })
 		.then((res) => {
 			console.log(`Server running on ${res.url}`);
 		})
